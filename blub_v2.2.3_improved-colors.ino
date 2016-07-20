@@ -545,7 +545,6 @@ void setPerfect() {
   
           analogWrite(YELLOW1, 0);
           analogWrite(YELLOW2, 0);
-          analogWrite(RED, 0);
           analogWrite(WHITE, 0);
           analogWrite(ORANGE, 100);
           analogWrite(BLUE, brightness);

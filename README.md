@@ -66,6 +66,5 @@ Where COMMAND can take any of the following values:
   - delays
   - patient
   - nightmare
-  - 
   
 Arduino will change the light/blink pattern based on the command sent

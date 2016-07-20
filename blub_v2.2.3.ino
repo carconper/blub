@@ -108,7 +108,7 @@ void setup() {
   analogWrite(GREEN, bright_green);
 
   lcd.init();
-  lcd.backlight();
+  //lcd.backlight();
 
   // Permanent Message in the LCD
   lcd.print("Message Received: ");
@@ -123,7 +123,7 @@ void setup() {
 
   /* Set the alarm time. 
      This will be a configurable time in the real application */
-  time_alarm = 5000 ;
+  time_alarm = 10000 ;
 
 }
 
@@ -522,11 +522,11 @@ void setCold() {
   
           analogWrite(YELLOW1, 0);
           analogWrite(YELLOW2, 0);
-          analogWrite(WHITE, 150);
-          analogWrite(ORANGE, brightness);
-          analogWrite(BLUE, 0);
+          analogWrite(WHITE, 60);
+          analogWrite(ORANGE, 0);
+          analogWrite(BLUE, 30);
           digitalWrite(GREEN, LOW);
-          analogWrite(RED, 0);
+          analogWrite(RED, brightness);
 
 
   // Move to waiting DAY state, listening to input from Particle
@@ -543,14 +543,13 @@ void setPerfect() {
   Serial.println("Brightness in PERFECT is:");
   Serial.println(brightness);
   
-          analogWrite(YELLOW1, brightness);
+          analogWrite(YELLOW1, 0);
           analogWrite(YELLOW2, 0);
-          analogWrite(RED, brightness);
-          analogWrite(WHITE, 100);
-          analogWrite(ORANGE, 0);
-          analogWrite(BLUE, 0);
+          analogWrite(WHITE, 0);
+          analogWrite(ORANGE, 100);
+          analogWrite(BLUE, brightness);
           digitalWrite(GREEN, LOW);
-          analogWrite(RED, 0);
+          analogWrite(RED, brightness);
   
   // Move to waiting DAY state, listening to input from Particle
   state = DAYSTAT;
@@ -591,7 +590,7 @@ void selectWeather(short weath) {
           // Start "every 100ms" timer (t1)
           t_every = tDebug.every(100,setSweat);
           // Start "after 5s" timer (t2)
-          tAwake.after(5*1000,setDay);
+          tAwake.after(10*1000,setDay);
           
           break;
 
@@ -604,7 +603,7 @@ void selectWeather(short weath) {
           // Start "every 100ms" timer (t1)
           t_every = tDebug.every(100,setUmbrella);
           // Start "after 5s" timer (t2)
-          tAwake.after(5*1000,setDay);
+          tAwake.after(10*1000,setDay);
           
           break;
 
@@ -619,7 +618,7 @@ void selectWeather(short weath) {
           //Serial.println("The value of t_every is:");
           //Serial.println(t_every);
           // Start "after 5s" timer (t2)
-          tAwake.after(5*1000,setDay);
+          tAwake.after(10*1000,setDay);
           
 
           break;
@@ -693,7 +692,7 @@ void selectTraffic(short traf) {
           // Start "every 1s" timer (t1)
           t_every = tDebug.every(1000,setNightmare);
           // Start "after 5s" timer (t2)
-          tAwake.after(5*1000,setDay);
+          tAwake.after(10*1000,setDay);
 
           break;
       }
@@ -762,7 +761,7 @@ void loop() {
       analogWrite(ORANGE, bright_orange);
       
       // Start Timer tAwake
-      tAwake.after(5*1000,setNightdown);
+      tAwake.after(10*1000,setNightdown);
 
       // Go to NIGHT waiting state
       state = NIGHT;
@@ -772,7 +771,7 @@ void loop() {
     case NIGHTDOWN:
       // Start Sleepdown timer tSleep
       // Dim down every 5 seconds
-      downEvent = tSleep.every(1*1000,downBrightness);
+      downEvent = tSleep.every(2*1000,downBrightness);
 
       // Go to NIGHT waiting state
       state = NIGHT;
@@ -797,7 +796,7 @@ void loop() {
 
       // Start waking up timer
       // Dim up every 5 seconds
-      upEvent = tWakeup.every(1*1000, upBrightness);
+      upEvent = tWakeup.every(2*1000, upBrightness);
 
       // Move to waiting state DAY
       state = DAY ; 

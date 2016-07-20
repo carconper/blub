@@ -2,13 +2,35 @@
 
 ## DESCRIPTION
 
-(Note: The proposed code in this repo is just a prototype of the final product)
+(Note: The proposed code in this repo is just a prototype of the final product that is described below)
 
 Blub is a lighting fixture compatible with a regular lamp. It's geometry is not much different than a regular bulb.
 
 However, through its built-in microphone and interacting with other smart devices, such as home automation systems or smart phones, it provides additional services when going to bed or when waking up.
-It comprises two parts: the lighting module, and the information ring
+It comprises two parts: the lighting module, and the information ring.
 
+The lighting module is made of led's of different hues which, when combined, emulate the sun hues of the sunset or the sunrise.
+The information ring is made of RGB led's that, combined, cast an additional layer of light for some seconds to subtly provide some useful information.
+
+### How it works
+
+#### Sleep Time
+
+You can set up on your Blub App the time you typically go to bed. Around that time, Blub will be on Sleep Mode. This means, every time you turn it on at sleep time, a countdown will start. For 5 min it will light at full brightness, then start dimming down for 5 more minutes if it does not feel you are awake, until it turns off completely. These default times can be adjusted on the Blub App as well.
+
+If any interaction of being active happens, i.e. using your phone or talking, the countdown will start over again at the brightness status of the time it was triggered.
+
+#### Wake Up Time
+
+Blub will interact with your smart devices, for example, to start dimming up some time before your clock alarm rings, to help transition to real life. You can set it up to start dimming up earlier if the traffic that day is expected to be bad or if heavy rains can make you get late to work.
+
+#### Useful Data
+
+Through Blub you can get useful information in a quick and intuitive manner to help you leave to work in the morning as efficiently as possible.
+
+By saying "Traffic" the information ring will cast some color patterns for some seconds to show the status of traffic on your daily commute, as is set up on your phone.
+
+In the same way, by saying "Weather" it will tell you what to wear at home and on your destination by means of colors and lighting patterns.
 
 
 ## PROTOTYPE
